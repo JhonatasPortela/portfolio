@@ -75,9 +75,9 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass-card-hover overflow-hidden group"
+      className="glass-card-hover overflow-hidden group flex flex-col h-full"
     >
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-48 overflow-hidden flex-shrink-0">
         <img
           src={project.image}
           alt={project.title}
@@ -86,16 +86,16 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60" />
       </div>
 
-      <div className="p-6 md:p-8 flex flex-col">
-        <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground group-hover:text-gradient transition-all duration-300">
+      <div className="p-6 md:p-8 flex flex-col flex-grow">
+        <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground group-hover:text-gradient transition-all duration-300 line-clamp-1">
           {project.title}
         </h3>
         
-        <p className="text-muted-foreground text-sm md:text-base mb-6 flex-grow leading-relaxed">
+        <p className="text-muted-foreground text-sm md:text-base mb-6 leading-relaxed line-clamp-3 min-h-[4.5rem]">
           {project.description}
         </p>
 
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6 min-h-[2rem]">
           {project.technologies.map((tech) => (
             <span
               key={tech}
@@ -108,14 +108,16 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           ))}
         </div>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
-          className="btn-neon-outline flex items-center justify-center gap-2 text-sm w-full"
-        >
-          <ExternalLink size={16} />
-          Ver Detalhes
-        </motion.button>
+        <div className="mt-auto">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="btn-neon-outline flex items-center justify-center gap-2 text-sm w-full"
+          >
+            <ExternalLink size={16} />
+            Ver Detalhes
+          </motion.button>
+        </div>
       </div>
     </motion.div>
   );
