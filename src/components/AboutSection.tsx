@@ -6,22 +6,22 @@ const skills = [
   {
     icon: Code2,
     title: "Desenvolvimento Fullstack",
-    description: "Java, React, Node.js, TypeScript",
+    description: "Java, React, TypeScript, Tailwind CSS",
   },
   {
     icon: Database,
     title: "Banco de Dados",
-    description: "PostgreSQL, MySQL, MongoDB",
+    description: "PostgreSQL, MySQL, Supabase",
   },
   {
     icon: TestTube,
     title: "Quality Assurance",
-    description: "Selenium, Jest, TestNG, CI/CD",
+    description: "Testes Manuais, Report de Bugs, Garantia de Qualidade",
   },
   {
     icon: Rocket,
     title: "Deploy & DevOps",
-    description: "Docker, AWS, GitHub Actions",
+    description: "Docker, GitHub Actions, Vercel/Netlify",
   },
 ];
 

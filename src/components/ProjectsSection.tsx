@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface Project {
   title: string;
   description: string;
   technologies: string[];
-  image?: string;
+  image: string;
 }
 
 const projects: Project[] = [
@@ -14,18 +15,21 @@ const projects: Project[] = [
     description:
       "Plataforma completa para gerenciamento de empresas com módulos de finanças, RH e estoque. Desenvolvido com arquitetura escalável e foco em performance.",
     technologies: ["Java", "Spring Boot", "React", "PostgreSQL"],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
   },
   {
     title: "E-commerce Moderno",
     description:
       "Loja virtual com integração de pagamentos, gestão de pedidos e painel administrativo completo. UI/UX otimizada para conversão.",
-    technologies: ["React", "Node.js", "Supabase", "Stripe"],
+    technologies: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
   },
   {
-    title: "App de Automação QA",
+    title: "Dashboard Analítico",
     description:
-      "Framework de testes automatizados para garantir qualidade em aplicações web e mobile. Relatórios detalhados e integração CI/CD.",
-    technologies: ["Selenium", "Java", "Jenkins", "TestNG"],
+      "Painel de controle com visualização de dados em tempo real, relatórios personalizados e métricas de performance.",
+    technologies: ["React", "TypeScript", "PostgreSQL", "Docker"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
   },
 ];
 
@@ -34,12 +38,10 @@ const techColors: Record<string, string> = {
   "Spring Boot": "text-neon-cyan",
   React: "text-neon-cyan",
   PostgreSQL: "text-neon-purple",
-  "Node.js": "text-neon-cyan",
+  TypeScript: "text-neon-cyan",
   Supabase: "text-neon-purple",
-  Stripe: "text-neon-pink",
-  Selenium: "text-neon-cyan",
-  Jenkins: "text-neon-pink",
-  TestNG: "text-neon-purple",
+  "Tailwind CSS": "text-neon-pink",
+  Docker: "text-neon-cyan",
 };
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
@@ -49,9 +51,19 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="glass-card-hover p-6 md:p-8 group"
+      className="glass-card-hover overflow-hidden group"
     >
-      <div className="flex flex-col h-full">
+      {/* Project Image */}
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60" />
+      </div>
+
+      <div className="p-6 md:p-8 flex flex-col">
         <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground group-hover:text-gradient transition-all duration-300">
           {project.title}
         </h3>
@@ -73,23 +85,14 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           ))}
         </div>
 
-        <div className="flex gap-3">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="btn-neon-outline flex items-center gap-2 text-sm"
-          >
-            <ExternalLink size={16} />
-            Visualizar Projeto
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="p-2 rounded-lg border border-glass-border text-muted-foreground hover:text-foreground hover:border-neon-purple/50 transition-all duration-300"
-          >
-            <Github size={18} />
-          </motion.button>
-        </div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
+          className="btn-neon-outline flex items-center justify-center gap-2 text-sm w-full"
+        >
+          <ExternalLink size={16} />
+          Ver Detalhes
+        </motion.button>
       </div>
     </motion.div>
   );
@@ -122,6 +125,26 @@ const ProjectsSection = () => {
             <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
+
+        {/* Ver todos os projetos button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex justify-center mt-12"
+        >
+          <Link to="/projetos">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-neon flex items-center gap-3 text-base px-8 py-4"
+            >
+              Ver todos os projetos
+              <ArrowRight size={20} />
+            </motion.button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

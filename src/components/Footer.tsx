@@ -1,21 +1,26 @@
 import { motion } from "framer-motion";
-import { Linkedin, Github, Mail } from "lucide-react";
+import { Linkedin, Github, Mail, MessageCircle } from "lucide-react";
 import miniLogo from "@/assets/mini-logo.png";
 
 const socialLinks = [
   {
+    icon: MessageCircle,
+    href: "https://wa.me/5573982070403",
+    label: "WhatsApp",
+  },
+  {
     icon: Linkedin,
-    href: "https://linkedin.com/in/jhonatasportela",
+    href: "https://www.linkedin.com/in/jhonatas-portela-1b74a124b/",
     label: "LinkedIn",
   },
   {
     icon: Github,
-    href: "https://github.com/jhonatasportela",
+    href: "https://github.com/portela-systems",
     label: "GitHub",
   },
   {
     icon: Mail,
-    href: "mailto:contato@portelasystems.com",
+    href: "mailto:portelasystems@gmail.com",
     label: "Email",
   },
 ];
