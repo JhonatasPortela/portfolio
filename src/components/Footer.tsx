@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Linkedin, Github, Mail, MessageCircle } from "lucide-react";
-import miniLogo from "@/assets/mini-logo.png";
+import miniLogo from "@/assets/logo-ps.png";
 
 const socialLinks = [
   {
