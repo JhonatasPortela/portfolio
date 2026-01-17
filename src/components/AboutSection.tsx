@@ -4,19 +4,19 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 
 const skills = [
   {
+    icon: TestTube,
+    title: "Quality Assurance",
+    description: "Garantia de Qualidade, Testes Manuais e Report de Bugs",
+  },
+  {
     icon: Code2,
-    title: "Desenvolvimento Fullstack",
-    description: "Java, React, TypeScript, Tailwind CSS",
+    title: "Backend",
+    description: "Java, Spring Boot e Integração de APIs",
   },
   {
     icon: Database,
     title: "Banco de Dados",
-    description: "PostgreSQL, MySQL, Supabase",
-  },
-  {
-    icon: TestTube,
-    title: "Quality Assurance",
-    description: "Testes Manuais, Report de Bugs, Garantia de Qualidade",
+    description: "PostgreSQL e Supabase",
   },
   {
     icon: Rocket,
@@ -46,7 +46,7 @@ const AboutSection = () => {
             Sobre
           </span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
-            Conheça o <span className="text-gradient">Desenvolvedor</span>
+            Liderança e <span className="text-gradient">Visão</span>
           </h2>
         </motion.div>
 
@@ -70,15 +70,18 @@ const AboutSection = () => {
               </div>
             </div>
 
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-center lg:text-left">
+            <h3 className="text-2xl md:text-3xl font-bold mb-2 text-center lg:text-left">
               Jhonatas Portela
             </h3>
+            <p className="text-neon-cyan text-sm font-medium mb-4 text-center lg:text-left">
+              Fundador da Portela Systems | QA & Full Stack Developer
+            </p>
             
             <p className="text-muted-foreground leading-relaxed text-center lg:text-left max-w-lg">
               Formado em <span className="text-neon-cyan font-medium">Análise e Desenvolvimento de Sistemas</span>, 
-              com sólida experiência em <span className="text-neon-pink font-medium">QA e Suporte</span>, 
-              e focado em construir soluções escaláveis com <span className="text-neon-purple font-medium">Java</span> e 
-              tecnologias modernas. Apaixonado por código limpo, boas práticas e entrega de valor.
+              especialista em <span className="text-neon-pink font-medium">Quality Assurance</span> e 
+              desenvolvedor focado em <span className="text-neon-purple font-medium">Java</span>, unindo experiência técnica 
+              à fundação da Portela Systems. Apaixonado por código limpo, boas práticas e entrega de valor.
             </p>
           </motion.div>
 
