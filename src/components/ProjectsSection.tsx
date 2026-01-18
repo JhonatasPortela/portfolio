@@ -101,7 +101,7 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex justify-center mt-12"
         >
-          <Link to="/projetos">
+          <Link to="/projetos" onClick={() => window.scrollTo(0, 0)}>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
