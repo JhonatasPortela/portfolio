@@ -1,9 +1,23 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Shield, User, Zap, ChevronRight, Home } from "lucide-react";
+import { 
+  ArrowLeft, 
+  ExternalLink, 
+  Shield, 
+  User, 
+  Zap, 
+  ChevronRight, 
+  Home,
+  Paintbrush,
+  Globe,
+  Headset,
+  TrendingUp,
+  Database,
+  LucideIcon
+} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getProjectById, techColors } from "@/data/projects";
+import { getProjectById, techColors, QualityHighlight } from "@/data/projects";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,6 +26,28 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+
+// Icon mapping for dynamic rendering
+const iconMap: Record<string, LucideIcon> = {
+  Shield,
+  User,
+  Zap,
+  Paintbrush,
+  Globe,
+  Headset,
+  TrendingUp,
+  Database,
+};
+
+// Helper function to get background color from text color
+const getIconBgColor = (iconColor: string): string => {
+  const colorMap: Record<string, string> = {
+    "text-neon-pink": "bg-neon-pink/20",
+    "text-neon-cyan": "bg-neon-cyan/20",
+    "text-neon-purple": "bg-neon-purple/20",
+  };
+  return colorMap[iconColor] || "bg-neon-purple/20";
+};
 
 const ProjectDetails = () => {
   const { projectId } = useParams<{ projectId: string }>();
@@ -171,7 +207,7 @@ const ProjectDetails = () => {
           </div>
         </section>
 
-        {/* Quality Highlights */}
+        {/* Quality Highlights - Dynamic Rendering */}
         <section className="py-16 md:py-24 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-purple/5 to-transparent" />
           <div className="container mx-auto px-6 relative z-10">
@@ -190,57 +226,35 @@ const ProjectDetails = () => {
               </h2>
             </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-              {/* Security */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="glass-card-hover p-8 text-center"
-              >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-neon-pink/20 flex items-center justify-center">
-                  <Shield className="w-8 h-8 text-neon-pink" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Segurança</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {project.qualityHighlights.security}
-                </p>
-              </motion.div>
-
-              {/* Usability */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="glass-card-hover p-8 text-center"
-              >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-neon-cyan/20 flex items-center justify-center">
-                  <User className="w-8 h-8 text-neon-cyan" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Usabilidade</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {project.qualityHighlights.usability}
-                </p>
-              </motion.div>
-
-              {/* Performance */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="glass-card-hover p-8 text-center"
-              >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-neon-purple/20 flex items-center justify-center">
-                  <Zap className="w-8 h-8 text-neon-purple" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Performance</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {project.qualityHighlights.performance}
-                </p>
-              </motion.div>
+            <div className={`grid gap-6 md:gap-8 ${
+              project.qualityHighlights.length === 1 
+                ? 'md:grid-cols-1 max-w-md mx-auto' 
+                : project.qualityHighlights.length === 2 
+                  ? 'md:grid-cols-2 max-w-3xl mx-auto' 
+                  : 'md:grid-cols-3'
+            }`}>
+              {project.qualityHighlights.map((highlight, index) => {
+                const IconComponent = iconMap[highlight.icon];
+                
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="glass-card-hover p-8 text-center"
+                  >
+                    <div className={`w-16 h-16 mx-auto mb-6 rounded-full ${getIconBgColor(highlight.iconColor)} flex items-center justify-center`}>
+                      {IconComponent && <IconComponent className={`w-8 h-8 ${highlight.iconColor}`} />}
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground mb-4">{highlight.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {highlight.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -315,8 +329,7 @@ const ProjectDetails = () => {
           </section>
         )}
 
-        {/* Testimonial Section - COMMENTED OUT FOR FUTURE USE */}
-        {/* 
+        {/* Testimonial Section - Conditional Rendering */}
         {project.testimonial && (
           <section className="py-16 md:py-24 relative">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-purple/5 to-transparent" />
@@ -328,13 +341,36 @@ const ProjectDetails = () => {
                 transition={{ duration: 0.6 }}
                 className="max-w-3xl mx-auto"
               >
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="text-center mb-12"
+                >
+                  <span className="text-neon-cyan text-sm font-medium tracking-wider uppercase">
+                    Feedback do Cliente
+                  </span>
+                  <h2 className="text-2xl md:text-4xl font-bold mt-3">
+                    O que dizem sobre <span className="text-gradient">nós</span>
+                  </h2>
+                </motion.div>
+                
                 <div className="glass-card p-8 md:p-12 text-center">
                   <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-neon-purple to-neon-pink p-1">
-                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <span className="text-2xl font-bold text-gradient">
-                        {project.testimonial.author.charAt(0)}
-                      </span>
-                    </div>
+                    {project.testimonial.avatar ? (
+                      <img 
+                        src={project.testimonial.avatar} 
+                        alt={project.testimonial.author}
+                        className="w-full h-full rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
+                        <span className="text-2xl font-bold text-gradient">
+                          {project.testimonial.author.charAt(0)}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <blockquote className="text-lg md:text-xl text-foreground italic mb-6 leading-relaxed">
                     "{project.testimonial.content}"
@@ -350,7 +386,6 @@ const ProjectDetails = () => {
             </div>
           </section>
         )}
-        */}
 
         {/* Back to Projects */}
         <section className="py-12">
