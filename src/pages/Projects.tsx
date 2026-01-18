@@ -47,7 +47,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         </div>
 
         <div className="mt-auto">
-          <Link to={`/projects/${project.id}`}>
+          <Link to={`/projects/${project.id}`} onClick={() => window.scrollTo(0, 0)}>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
