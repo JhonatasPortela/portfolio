@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Linkedin, Github, Mail, MessageCircle } from "lucide-react";
+import { Linkedin, Github, Mail, MessageCircle, Instagram } from "lucide-react";
 import miniLogo from "@/assets/logo-ps.png";
 
 const socialLinks = [
@@ -23,6 +23,11 @@ const socialLinks = [
     href: "mailto:portelasystems@gmail.com",
     label: "Email",
   },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/jhonatasportela/",
+    label: "Instagram",
+  },
 ];
 
 const Footer = () => {
@@ -44,7 +49,8 @@ const Footer = () => {
             Vamos <span className="text-gradient">trabalhar juntos</span>?
           </h3>
           <p className="text-muted-foreground mb-8 max-w-md">
-            Entre em contato para discutir seu próximo projeto ou oportunidade de colaboração.
+            Entre em contato para discutir seu próximo projeto ou oportunidade
+            de colaboração.
           </p>
 
           {/* Social Links */}
@@ -73,7 +79,7 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground">
               © 2026 Portela Systems - Desenvolvido por Jhonatas Portela
             </p>
-            
+
             <motion.img
               src={miniLogo}
               alt="PS Logo"

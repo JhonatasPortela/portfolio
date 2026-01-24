@@ -1,19 +1,19 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { 
-  ArrowLeft, 
-  ExternalLink, 
-  Shield, 
-  User, 
-  Zap, 
-  ChevronRight, 
+import {
+  ArrowLeft,
+  ExternalLink,
+  Shield,
+  User,
+  Zap,
+  ChevronRight,
   Home,
   Paintbrush,
   Globe,
   Headset,
   TrendingUp,
   Database,
-  LucideIcon
+  LucideIcon,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -59,7 +59,9 @@ const ProjectDetails = () => {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Projeto não encontrado</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">
+            Projeto não encontrado
+          </h1>
           <Link to="/projetos" className="text-neon-cyan hover:underline">
             Voltar para projetos
           </Link>
@@ -87,7 +89,10 @@ const ProjectDetails = () => {
                 <BreadcrumbList>
                   <BreadcrumbItem>
                     <BreadcrumbLink asChild>
-                      <Link to="/" className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
+                      <Link
+                        to="/"
+                        className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+                      >
                         <Home size={14} />
                         Home
                       </Link>
@@ -98,7 +103,10 @@ const ProjectDetails = () => {
                   </BreadcrumbSeparator>
                   <BreadcrumbItem>
                     <BreadcrumbLink asChild>
-                      <Link to="/projetos" className="text-muted-foreground hover:text-foreground transition-colors">
+                      <Link
+                        to="/projetos"
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                      >
                         Projetos
                       </Link>
                     </BreadcrumbLink>
@@ -107,7 +115,9 @@ const ProjectDetails = () => {
                     <ChevronRight size={14} />
                   </BreadcrumbSeparator>
                   <BreadcrumbItem>
-                    <BreadcrumbPage className="text-foreground">{project.title}</BreadcrumbPage>
+                    <BreadcrumbPage className="text-foreground">
+                      {project.title}
+                    </BreadcrumbPage>
                   </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>
@@ -179,7 +189,9 @@ const ProjectDetails = () => {
                   <div className="w-12 h-12 rounded-full bg-neon-pink/20 flex items-center justify-center">
                     <div className="w-3 h-3 rounded-full bg-neon-pink" />
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground">O Desafio</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                    O Desafio
+                  </h2>
                 </div>
                 <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
                   {project.challenge}
@@ -198,7 +210,9 @@ const ProjectDetails = () => {
                   <div className="w-12 h-12 rounded-full bg-neon-cyan/20 flex items-center justify-center">
                     <div className="w-3 h-3 rounded-full bg-neon-cyan" />
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground">A Solução</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                    A Solução
+                  </h2>
                 </div>
                 <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
                   {project.solution}
@@ -227,16 +241,18 @@ const ProjectDetails = () => {
               </h2>
             </motion.div>
 
-            <div className={`grid gap-6 md:gap-8 ${
-              project.qualityHighlights.length === 1 
-                ? 'md:grid-cols-1 max-w-md mx-auto' 
-                : project.qualityHighlights.length === 2 
-                  ? 'md:grid-cols-2 max-w-3xl mx-auto' 
-                  : 'md:grid-cols-3'
-            }`}>
+            <div
+              className={`grid gap-6 md:gap-8 ${
+                project.qualityHighlights.length === 1
+                  ? "md:grid-cols-1 max-w-md mx-auto"
+                  : project.qualityHighlights.length === 2
+                    ? "md:grid-cols-2 max-w-3xl mx-auto"
+                    : "md:grid-cols-3"
+              }`}
+            >
               {project.qualityHighlights.map((highlight, index) => {
                 const IconComponent = iconMap[highlight.icon];
-                
+
                 return (
                   <motion.div
                     key={index}
@@ -246,10 +262,18 @@ const ProjectDetails = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="glass-card-hover p-8 text-center"
                   >
-                    <div className={`w-16 h-16 mx-auto mb-6 rounded-full ${getIconBgColor(highlight.iconColor)} flex items-center justify-center`}>
-                      {IconComponent && <IconComponent className={`w-8 h-8 ${highlight.iconColor}`} />}
+                    <div
+                      className={`w-16 h-16 mx-auto mb-6 rounded-full ${getIconBgColor(highlight.iconColor)} flex items-center justify-center`}
+                    >
+                      {IconComponent && (
+                        <IconComponent
+                          className={`w-8 h-8 ${highlight.iconColor}`}
+                        />
+                      )}
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-4">{highlight.title}</h3>
+                    <h3 className="text-xl font-bold text-foreground mb-4">
+                      {highlight.title}
+                    </h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {highlight.description}
                     </p>
@@ -278,7 +302,10 @@ const ProjectDetails = () => {
               </h2>
             </motion.div>
 
-            <GalleryLightbox images={project.gallery} projectTitle={project.title} />
+            <GalleryLightbox
+              images={project.gallery}
+              projectTitle={project.title}
+            />
           </div>
         </section>
 
@@ -338,12 +365,12 @@ const ProjectDetails = () => {
                     O que dizem sobre <span className="text-gradient">nós</span>
                   </h2>
                 </motion.div>
-                
+
                 <div className="glass-card p-8 md:p-12 text-center">
                   <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-neon-purple to-neon-pink p-1">
                     {project.testimonial.avatar ? (
-                      <img 
-                        src={project.testimonial.avatar} 
+                      <img
+                        src={project.testimonial.avatar}
                         alt={project.testimonial.author}
                         className="w-full h-full rounded-full object-cover"
                       />
@@ -359,7 +386,9 @@ const ProjectDetails = () => {
                     "{project.testimonial.content}"
                   </blockquote>
                   <div>
-                    <p className="font-bold text-foreground">{project.testimonial.author}</p>
+                    <p className="font-bold text-foreground">
+                      {project.testimonial.author}
+                    </p>
                     <p className="text-muted-foreground text-sm">
                       {project.testimonial.role} • {project.testimonial.company}
                     </p>
