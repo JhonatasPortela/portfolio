@@ -41,7 +41,13 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const TestimonialCard = ({ testimonial, index }: { testimonial: Testimonial; index: number }) => {
+const TestimonialCard = ({
+  testimonial,
+  index,
+}: {
+  testimonial: Testimonial;
+  index: number;
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -71,7 +77,9 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: Testimonial; ind
       <div className="flex items-center gap-4">
         <div className="w-14 h-14 rounded-full bg-gradient-to-br from-neon-purple to-neon-pink p-0.5">
           <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-            <span className="text-xl font-bold text-gradient">{testimonial.author.charAt(0)}</span>
+            <span className="text-xl font-bold text-gradient">
+              {testimonial.author.charAt(0)}
+            </span>
           </div>
         </div>
         <div>
@@ -87,7 +95,7 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: Testimonial; ind
 
 const TestimonialsSection = () => {
   // Set to true to show testimonials when you have real feedback
-  const showTestimonials = true;
+  const showTestimonials = false;
 
   if (!showTestimonials) {
     return null;
@@ -104,7 +112,9 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-neon-cyan text-sm font-medium tracking-wider uppercase">Prova Social</span>
+          <span className="text-neon-cyan text-sm font-medium tracking-wider uppercase">
+            Prova Social
+          </span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4">
             Depoimentos de <span className="text-gradient">Sucesso</span>
           </h2>
@@ -115,7 +125,11 @@ const TestimonialsSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
+            <TestimonialCard
+              key={testimonial.id}
+              testimonial={testimonial}
+              index={index}
+            />
           ))}
         </div>
       </div>

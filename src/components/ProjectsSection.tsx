@@ -5,9 +5,15 @@ import { projects, techColors } from "@/data/projects";
 import type { Project } from "@/data/projects";
 
 // Show only first 3 projects on home
-const featuredProjects = projects.slice(0, 3);
+const featuredProjects = projects.filter((project) => project.featured);
 
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -30,7 +36,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground group-hover:text-gradient transition-all duration-300 line-clamp-1">
           {project.title}
         </h3>
-        
+
         <p className="text-muted-foreground text-sm md:text-base mb-6 leading-relaxed line-clamp-3 min-h-[4.5rem]">
           {project.shortDescription}
         </p>
@@ -49,7 +55,10 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         </div>
 
         <div className="mt-auto">
-          <Link to={`/projects/${project.id}`} onClick={() => window.scrollTo(0, 0)}>
+          <Link
+            to={`/projects/${project.id}`}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
@@ -83,7 +92,8 @@ const ProjectsSection = () => {
             Projetos em <span className="text-gradient">Destaque</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Soluções desenvolvidas com foco em qualidade, performance e experiência do usuário.
+            Soluções desenvolvidas com foco em qualidade, performance e
+            experiência do usuário.
           </p>
         </motion.div>
 
