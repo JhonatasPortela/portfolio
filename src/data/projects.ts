@@ -78,6 +78,60 @@ export const projects: Project[] = [
         "Este projeto foi o marco da minha entrada na empresa. Mesmo enfrentando ferramentas novas (TS/Chakra), a persistência em entregar uma solução completa me garantiu o reconhecimento e a vaga.",
     }, */
   },
+  {
+    id: "emprega-itabela",
+    featured: true,
+    title: "Emprega Itabela",
+    shortDescription:
+      "Plataforma completa de empregabilidade e serviços autônomos, integrando candidatos, empresas e gerador de currículos profissional.",
+    challenge:
+      "Desenvolver uma solução centralizada para o mercado de trabalho local. O maior desafio foi criar um fluxo de dados seguro para três tipos de usuários distintos e implementar a tecnologia PWA para que o sistema funcionasse como um aplicativo nativo (APK) nos celulares dos usuários.",
+    solution:
+      "Construí uma plataforma robusta com React e Supabase, focada em acessibilidade. Implementei um gerador de currículos dinâmico que exporta dados em PDF, um painel para empresas gerenciarem vagas e uma vitrine para profissionais autônomos divulgarem seus serviços, tudo otimizado para instalação via PWA.",
+    qualityHighlights: [
+      {
+        icon: "User", // Remete aos candidatos e empresas
+        iconColor: "text-neon-cyan",
+        title: "Ecossistema Completo",
+        description:
+          "Interface dedicada para empresas postarem vagas e candidatos gerenciarem candidaturas e serviços autônomos.",
+      },
+      {
+        icon: "Zap", // Remete ao gerador automático
+        iconColor: "text-neon-purple",
+        title: "Gerador de Currículos",
+        description:
+          "Ferramenta integrada que transforma os dados do perfil em um currículo profissional pronto para o mercado.",
+      },
+      {
+        icon: "Shield", // Remete à segurança e deploy PWA/APK
+        iconColor: "text-neon-pink",
+        title: "Tecnologia PWA/APK",
+        description:
+          "Sistema instalável diretamente no smartphone, garantindo acesso rápido e performance de aplicativo nativo.",
+      },
+    ],
+    technologies: [
+      "React",
+      "Supabase",
+      "PWA",
+      "Tailwind CSS",
+      "PDF Generation",
+    ],
+    image:
+      "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20204331.png",
+    gallery: [
+      "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20203734.png",
+      "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20203806.png",
+      "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20203849.png",
+      "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20203932.png",
+      "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20204024.png",
+      "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20204041.png",
+      "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20204104.png",
+      "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20204148.png",
+    ],
+    productionUrl: "https://empregaitabela.portela.app.br", // Ex: emprega-itabela.vercel.app
+  },
 ];
 
 export const techColors: Record<string, string> = {
