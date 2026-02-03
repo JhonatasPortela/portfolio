@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
-import { Code2, Database, TestTube, Rocket } from "lucide-react";
+import {
+  Code2,
+  Database,
+  TestTube,
+  Rocket,
+  Smartphone,
+  Zap,
+  Layout,
+  ClipboardCheck,
+} from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const skills = [
@@ -7,21 +16,49 @@ const skills = [
     icon: TestTube,
     title: "Quality Assurance",
     description: "Garantia de Qualidade, Testes Manuais e Report de Bugs",
+    color: "text-neon-pink",
   },
   {
     icon: Code2,
     title: "Backend",
     description: "Java, Spring Boot e Integração de APIs",
+    color: "text-neon-purple",
+  },
+  {
+    icon: Layout,
+    title: "Frontend",
+    description: "React, TypeScript, Tailwind CSS e Chakra UI",
+    color: "text-neon-cyan",
   },
   {
     icon: Database,
     title: "Banco de Dados",
     description: "PostgreSQL e Supabase",
+    color: "text-neon-cyan",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile & PWA",
+    description: "Android Studio (APK) e Progressive Web Apps",
+    color: "text-neon-purple",
   },
   {
     icon: Rocket,
     title: "Deploy & DevOps",
-    description: "Docker, GitHub Actions, Vercel/Netlify",
+    description: "Docker, GitHub Actions e Gerenciamento de VPS",
+    color: "text-neon-pink",
+  },
+  {
+    icon: Zap,
+    title: "IA & Produtividade",
+    description: "Desenvolvimento assistido com Lovable e ferramentas de IA",
+    color: "text-neon-cyan",
+  },
+  {
+    icon: ClipboardCheck, // Você precisará importar o ClipboardCheck do lucide-react
+    title: "Gestão & Processos",
+    description: "Metodologias Ágeis, Clean Code e Foco em Entrega de Valor",
+    color: "text-neon-purple",
   },
 ];
 
@@ -76,22 +113,30 @@ const AboutSection = () => {
             <p className="text-neon-cyan text-sm font-medium mb-4 text-center lg:text-left">
               Fundador da Portela Systems | QA & Full Stack Developer
             </p>
-            
+
             <p className="text-muted-foreground leading-relaxed text-center lg:text-left max-w-lg">
-              Formado em <span className="text-neon-cyan font-medium">Análise e Desenvolvimento de Sistemas</span>, 
-              especialista em <span className="text-neon-pink font-medium">Quality Assurance</span> e 
-              desenvolvedor focado em <span className="text-neon-purple font-medium">Java</span>, unindo experiência técnica 
-              à fundação da Portela Systems. Apaixonado por código limpo, boas práticas e entrega de valor.
+              Formado em{" "}
+              <span className="text-neon-cyan font-medium">
+                Análise e Desenvolvimento de Sistemas
+              </span>
+              , especialista em{" "}
+              <span className="text-neon-pink font-medium">
+                Quality Assurance
+              </span>{" "}
+              e desenvolvedor focado em{" "}
+              <span className="text-neon-purple font-medium">Java</span>, unindo
+              experiência técnica à fundação da Portela Systems. Apaixonado por
+              código limpo, boas práticas e entrega de valor.
             </p>
           </motion.div>
 
-          {/* Skills Grid */}
+          {/* Skills Grid - Agora com suporte a mais itens e scroll suave no mobile */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="grid sm:grid-cols-2 gap-4"
+            className="grid sm:grid-cols-2 gap-4 max-h-[600px] lg:max-h-none overflow-y-auto lg:overflow-visible pr-2 lg:pr-0"
           >
             {skills.map((skill, index) => (
               <motion.div
@@ -100,13 +145,17 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-card-hover p-6 group"
+                className="glass-card-hover p-5 group"
               >
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-neon-purple/20 to-neon-pink/20 flex items-center justify-center mb-4 group-hover:from-neon-purple/30 group-hover:to-neon-pink/30 transition-all duration-300">
-                  <skill.icon className="w-6 h-6 text-neon-cyan" />
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-white/5 to-white/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-all duration-300">
+                  <skill.icon className={`w-5 h-5 ${skill.color}`} />
                 </div>
-                <h4 className="font-semibold mb-2 text-foreground">{skill.title}</h4>
-                <p className="text-sm text-muted-foreground">{skill.description}</p>
+                <h4 className="font-semibold mb-1 text-sm text-foreground">
+                  {skill.title}
+                </h4>
+                <p className="text-xs text-muted-foreground leading-tight">
+                  {skill.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>

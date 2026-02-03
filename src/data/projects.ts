@@ -79,36 +79,36 @@ export const projects: Project[] = [
     }, */
   },
   {
-    id: "emprega-itabela",
+    id: "gov-connect-itabela",
     featured: true,
-    title: "Emprega Itabela",
+    title: "GovConnect - Gestão Pública",
     shortDescription:
-      "Plataforma completa de empregabilidade e serviços autônomos, integrando candidatos, empresas e gerador de currículos profissional.",
+      "Ecossistema de empregabilidade para o setor público. Ambiente de demonstração populado com dados fictícios para validação de fluxos e UX.",
     challenge:
-      "Desenvolver uma solução centralizada para o mercado de trabalho local. O maior desafio foi criar um fluxo de dados seguro para três tipos de usuários distintos e implementar a tecnologia PWA para que o sistema funcionasse como um aplicativo nativo (APK) nos celulares dos usuários.",
+      "Desenvolver uma solução centralizada para o mercado de trabalho regional. O maior desafio foi criar um fluxo de dados seguro para três tipos de usuários distintos e implementar a tecnologia PWA para que o sistema funcionasse como um aplicativo nativo (APK) de alta performance.",
     solution:
-      "Construí uma plataforma robusta com React e Supabase, focada em acessibilidade. Implementei um gerador de currículos dinâmico que exporta dados em PDF, um painel para empresas gerenciarem vagas e uma vitrine para profissionais autônomos divulgarem seus serviços, tudo otimizado para instalação via PWA.",
+      "Construí uma plataforma robusta com React e Supabase, focada em acessibilidade e escalabilidade. Implementei um gerador de currículos dinâmico que exporta dados em PDF, um painel para empresas gerenciarem processos seletivos e uma vitrine para profissionais autônomos, tudo otimizado via PWA.",
     qualityHighlights: [
       {
-        icon: "User", // Remete aos candidatos e empresas
+        icon: "User",
         iconColor: "text-neon-cyan",
-        title: "Ecossistema Completo",
+        title: "Arquitetura Multi-Tenant",
         description:
-          "Interface dedicada para empresas postarem vagas e candidatos gerenciarem candidaturas e serviços autônomos.",
+          "Interface dedicada com permissões granulares para empresas, candidatos e administradores gerenciarem vagas e serviços.",
       },
       {
-        icon: "Zap", // Remete ao gerador automático
+        icon: "Zap",
         iconColor: "text-neon-purple",
-        title: "Gerador de Currículos",
+        title: "Automação de Documentos",
         description:
-          "Ferramenta integrada que transforma os dados do perfil em um currículo profissional pronto para o mercado.",
+          "Motor de geração de PDF integrado que transforma perfis digitais em currículos profissionais padronizados instantaneamente.",
       },
       {
-        icon: "Shield", // Remete à segurança e deploy PWA/APK
+        icon: "Shield",
         iconColor: "text-neon-pink",
-        title: "Tecnologia PWA/APK",
+        title: "Mobile First & PWA",
         description:
-          "Sistema instalável diretamente no smartphone, garantindo acesso rápido e performance de aplicativo nativo.",
+          "Deploy focado em acessibilidade mobile, permitindo a instalação do sistema sem a necessidade de lojas de aplicativos (APK).",
       },
     ],
     technologies: [
@@ -130,7 +130,7 @@ export const projects: Project[] = [
       "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20204104.png",
       "https://wqwmqsbzilykkyhjgosu.supabase.co/storage/v1/object/public/projects/Captura%20de%20tela%202026-01-27%20204148.png",
     ],
-    productionUrl: "https://empregaitabela.portela.app.br", // Ex: emprega-itabela.vercel.app
+    productionUrl: "https://empregaitabela.portela.app.br",
   },
 ];
 
@@ -147,6 +147,8 @@ export const techColors: Record<string, string> = {
   "Chakra UI": "text-neon-purple",
   "Rest API": "text-neon-pink",
   Vercel: "text-neon-cyan",
+  PWA: "text-neon-purple",
+  "PDF Generation": "text-neon-pink",
 };
 
 export const getProjectById = (id: string): Project | undefined => {
